@@ -1,0 +1,38 @@
+<h1 class="text-center my-4">Pokedex</h1>
+
+
+<div class="container my-4"> 
+  <div class="row g-4">
+    @for (p of pokemons; track p.id) { <!--bootstrap varia in base alla dimensione dello schermo
+      il ciclo for serve per ciclare i pokemon dentro l'array dei pokemon -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100" style="cursor: pointer;" (click)="SelectPokemon(p)"> <!--con il click chiama funzione selectpokemon e gli passa il pokemon cliccato -->
+          <div class="row g-0 align-items-center"> 
+            
+            <div class="col-5 col-md-6">
+              <img [src]="p.imageUrl" class="img-fluid rounded-start" alt="foto di {{p.name}}"> <!--l-->
+            </div>
+            
+            <div class="col-7 col-md-6">
+              <div class="card-body p-2 p-md-3">
+                <h5 class="card-title">{{p.name}}</h5>
+                <p class="card-text"><small class="text-muted">{{p.type}}</small></p>
+              </div>
+            </div>
+            
+          </div>
+        </div> 
+      </div> 
+    }
+  </div>
+</div>
+
+<br>
+
+
+
+@if (selectedPokemon) {
+  <app-pokedex [pokemon]="selectedPokemon"></app-pokedex> <!-- se il nostro select pokemon è stato chiamo, chiama il componente figlio passandogli
+  il singolo pokemon cliccato, poi manda tutto al figlio -->
+
+}
